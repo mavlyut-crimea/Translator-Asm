@@ -1,0 +1,406 @@
+.text
+00010074        register_fini: addi a5, zero, 0
+00010078                     : beq a5, zero, 256
+0001007c                     : lui  a0, 0x10
+00010080                     : addi a0, a0, 1164
+00010084                     : jal  zero, -1024
+00010088                     : jalr  zero, 0(ra)
+0001008c               _start: auipc  gp, 0x2
+00010090                     : addi gp, gp, -684
+00010094                     : addi a0, gp, -972
+00010098                     : addi a2, gp, -944
+0001009c                     : sub a2, a2, a0
+000100a0                     : addi a1, zero, 0
+000100a4                     : jal  ra, 0
+000100a8                     : auipc  a0, 0x0
+000100ac                     : addi a0, a0, 976
+000100b0                     : beq a0, zero, 256
+000100b4                     : auipc  a0, 0x0
+000100b8                     : addi a0, a0, 984
+000100bc                     : jal  ra, -1024
+000100c0                     : jal  ra, 0
+000100c4                     : lw a0, 0(sp)
+000100c8                     : addi a1, sp, 4
+000100cc                     : addi a2, zero, 0
+000100d0                     : jal  ra, -1024
+000100d4                     : jal  zero, -1024
+000100d8 __do_global_dtors_aux: lbu a4, -972(gp)
+000100dc                     : bne a4, zero, -960
+000100e0                     : addi sp, sp, -16
+000100e4                     : sw s0, 8(sp)
+000100e8                     : addi s0, a5, 0
+000100ec                     : sw ra, 12(sp)
+000100f0                     : addi a5, zero, 0
+000100f4                     : beq a5, zero, -768
+000100f8                     : lui  a0, 0x11
+000100fc                     : addi a0, a0, 1484
+00010100                     : auipc  ra, 0x0
+00010104                     : jalr  ra, 0(zero)
+00010108                     : addi a5, zero, 1
+0001010c                     : lw ra, 12(sp)
+00010110                     : sb a5, 20(gp)
+00010114                     : lw s0, 8(sp)
+00010118                     : addi sp, sp, 16
+0001011c                     : jalr  zero, 0(ra)
+00010120                     : jalr  zero, 0(ra)
+00010124          frame_dummy: addi a5, zero, 0
+00010128                     : beq a5, zero, 768
+0001012c                     : lui  a0, 0x11
+00010130                     : addi a1, gp, -968
+00010134                     : addi a0, a0, 1484
+00010138                     : auipc  t1, 0x0
+0001013c                     : jalr  zero, 0(zero)
+00010140                     : jalr  zero, 0(ra)
+00010144                 main: addi sp, sp, -32
+00010148                     : sw s0, 28(sp)
+0001014c                     : addi s0, sp, 32
+00010150                     : addi a5, zero, 2
+00010154                     : sw a5, 4(s0)
+00010158                     : addi a5, zero, 3
+0001015c                     : sw a5, 0(s0)
+00010160                     : sw zero, 12(s0)
+00010164                     : sw zero, 8(s0)
+00010168                     : jal  zero, 0
+0001016c                     : lw a4, -20(s0)
+00010170                     : lw a5, -24(s0)
+00010174                     : add a5, a4, a5
+00010178                     : sw a5, 12(s0)
+0001017c                     : lw a5, -24(s0)
+00010180                     : addi a5, a5, 1
+00010184                     : sw a5, 8(s0)
+00010188                     : lw a4, -28(s0)
+0001018c                     : lw a5, -32(s0)
+00010190                     : mul a5, a4, a5
+00010194                     : lw a4, -24(s0)
+00010198                     : blt a4, a5, -641
+0001019c                     : addi a5, zero, 0
+000101a0                     : addi a0, a5, 0
+000101a4                     : lw s0, 28(sp)
+000101a8                     : addi sp, sp, 32
+000101ac                     : jalr  zero, 0(ra)
+000101b0                 exit: addi sp, sp, -16
+000101b4                     : addi a1, zero, 0
+000101b8                     : sw s0, 8(sp)
+000101bc                     : sw ra, 12(sp)
+000101c0                     : addi s0, a0, 0
+000101c4                     : jal  ra, -1024
+000101c8                     : lw a0, -984(gp)
+000101cc                     : lw a5, 60(a0)
+000101d0                     : beq a5, zero, 512
+000101d4                     : jalr  ra, 0(a5)
+000101d8                     : addi a0, s0, 0
+000101dc                     : jal  ra, -1024
+000101e0    __libc_init_array: addi sp, sp, -16
+000101e4                     : sw s0, 8(sp)
+000101e8                     : sw s2, 0(sp)
+000101ec                     : lui  s0, 0x11
+000101f0                     : lui  s2, 0x11
+000101f4                     : addi a5, s0, 1488
+000101f8                     : addi s2, s2, 1488
+000101fc                     : sub s2, s2, a5
+00010200                     : sw ra, 12(sp)
+00010204                     : sw s1, 4(sp)
+00010208                     : srai s2, s2, 0x2
+0001020c                     : beq s2, zero, 128
+00010210                     : addi s0, s0, 1488
+00010214                     : addi s1, zero, 0
+00010218                     : lw a5, 0(s0)
+0001021c                     : addi s1, s1, 1
+00010220                     : addi s0, s0, 4
+00010224                     : jalr  ra, 0(a5)
+00010228                     : bne s2, s1, 511
+0001022c                     : lui  s0, 0x11
+00010230                     : lui  s2, 0x11
+00010234                     : addi a5, s0, 1488
+00010238                     : addi s2, s2, 1496
+0001023c                     : sub s2, s2, a5
+00010240                     : srai s2, s2, 0x2
+00010244                     : beq s2, zero, 128
+00010248                     : addi s0, s0, 1488
+0001024c                     : addi s1, zero, 0
+00010250                     : lw a5, 0(s0)
+00010254                     : addi s1, s1, 1
+00010258                     : addi s0, s0, 4
+0001025c                     : jalr  ra, 0(a5)
+00010260                     : bne s2, s1, 511
+00010264                     : lw ra, 12(sp)
+00010268                     : lw s0, 8(sp)
+0001026c                     : lw s1, 4(sp)
+00010270                     : lw s2, 0(sp)
+00010274                     : addi sp, sp, 16
+00010278                     : jalr  zero, 0(ra)
+0001027c               memset: addi t1, zero, 15
+00010280                     : addi a4, a0, 0
+00010284                     : bgeu t1, a2, -128
+00010288                     : andi a5, a4, 15
+0001028c                     : bne a5, zero, 160
+00010290                     : bne a1, zero, -992
+00010294                     : andi a3, a2, -16
+00010298                     : andi a2, a2, 15
+0001029c                     : add a3, a3, a4
+000102a0                     : sw a1, 0(a4)
+000102a4                     : sw a1, 4(a4)
+000102a8                     : sw a1, 8(a4)
+000102ac                     : sw a1, 12(a4)
+000102b0                     : addi a4, a4, 16
+000102b4                     : bltu a4, a3, -257
+000102b8                     : bne a2, zero, 512
+000102bc                     : jalr  zero, 0(ra)
+000102c0                     : sub a3, t1, a2
+000102c4                     : slli a3, a3, 0x2
+000102c8                     : auipc  t0, 0x0
+000102cc                     : add a3, a3, t0
+000102d0                     : jalr  zero, 12(a3)
+000102d4                     : sb a1, 14(a4)
+000102d8                     : sb a1, 13(a4)
+000102dc                     : sb a1, 12(a4)
+000102e0                     : sb a1, 11(a4)
+000102e4                     : sb a1, 10(a4)
+000102e8                     : sb a1, 9(a4)
+000102ec                     : sb a1, 8(a4)
+000102f0                     : sb a1, 7(a4)
+000102f4                     : sb a1, 6(a4)
+000102f8                     : sb a1, 5(a4)
+000102fc                     : sb a1, 4(a4)
+00010300                     : sb a1, 3(a4)
+00010304                     : sb a1, 2(a4)
+00010308                     : sb a1, 1(a4)
+0001030c                     : sb a1, 0(a4)
+00010310                     : jalr  zero, 0(ra)
+00010314                     : andi a1, a1, 255
+00010318                     : slli a3, a1, 0x8
+0001031c                     : or a1, a1, a3
+00010320                     : slli a3, a1, 0x10
+00010324                     : or a1, a1, a3
+00010328                     : jal  zero, -513
+0001032c                     : slli a3, a5, 0x2
+00010330                     : auipc  t0, 0x0
+00010334                     : add a3, a3, t0
+00010338                     : addi t0, ra, 0
+0001033c                     : jalr  ra, -96(a3)
+00010340                     : addi ra, t0, 0
+00010344                     : addi a5, a5, -16
+00010348                     : sub a4, a4, a5
+0001034c                     : add a2, a2, a5
+00010350                     : bgeu t1, a2, 479
+00010354                     : jal  zero, -513
+00010358     __call_exitprocs: addi sp, sp, -48
+0001035c                     : sw s4, 24(sp)
+00010360                     : lw s4, -984(gp)
+00010364                     : sw s2, 0(sp)
+00010368                     : sw ra, 12(sp)
+0001036c                     : lw s2, 328(s4)
+00010370                     : sw s0, 8(sp)
+00010374                     : sw s1, 4(sp)
+00010378                     : sw s3, 28(sp)
+0001037c                     : sw s5, 20(sp)
+00010380                     : sw s6, 16(sp)
+00010384                     : sw s7, 12(sp)
+00010388                     : sw s8, 8(sp)
+0001038c                     : beq s2, zero, 64
+00010390                     : addi s6, a0, 0
+00010394                     : addi s7, a1, 0
+00010398                     : addi s5, zero, 1
+0001039c                     : addi s3, zero, -1
+000103a0                     : lw s1, 4(s2)
+000103a4                     : addi s0, s1, -1
+000103a8                     : blt s0, zero, -896
+000103ac                     : slli s1, s1, 0x2
+000103b0                     : add s1, s2, s1
+000103b4                     : beq s7, zero, 576
+000103b8                     : lw a5, 260(s1)
+000103bc                     : beq a5, s7, 64
+000103c0                     : addi s0, s0, -1
+000103c4                     : addi s1, s1, -4
+000103c8                     : bne s0, s3, -257
+000103cc                     : lw ra, 44(sp)
+000103d0                     : lw s0, 40(sp)
+000103d4                     : lw s1, 36(sp)
+000103d8                     : lw s2, 32(sp)
+000103dc                     : lw s3, 28(sp)
+000103e0                     : lw s4, 24(sp)
+000103e4                     : lw s5, 20(sp)
+000103e8                     : lw s6, 16(sp)
+000103ec                     : lw s7, 12(sp)
+000103f0                     : lw s8, 8(sp)
+000103f4                     : addi sp, sp, 48
+000103f8                     : jalr  zero, 0(ra)
+000103fc                     : lw a5, 4(s2)
+00010400                     : lw a3, 4(s1)
+00010404                     : addi a5, a5, -1
+00010408                     : beq a5, s0, -192
+0001040c                     : sw zero, 4(s1)
+00010410                     : beq a3, zero, 447
+00010414                     : lw a5, 392(s2)
+00010418                     : sll a4, s5, s0
+0001041c                     : lw s8, 4(s2)
+00010420                     : and a5, a4, a5
+00010424                     : bne a5, zero, -896
+00010428                     : jalr  ra, 0(a3)
+0001042c                     : lw a4, 4(s2)
+00010430                     : lw a5, 328(s4)
+00010434                     : bne a4, s8, 512
+00010438                     : beq a5, s2, 575
+0001043c                     : beq a5, zero, 319
+00010440                     : addi s2, a5, 0
+00010444                     : jal  zero, -513
+00010448                     : lw a5, 396(s2)
+0001044c                     : lw a1, 132(s1)
+00010450                     : and a4, a4, a5
+00010454                     : bne a4, zero, 768
+00010458                     : addi a0, s6, 0
+0001045c                     : jalr  ra, 0(a3)
+00010460                     : jal  zero, -513
+00010464                     : sw s0, 4(s2)
+00010468                     : jal  zero, 511
+0001046c                     : addi a0, a1, 0
+00010470                     : jalr  ra, 0(a3)
+00010474                     : jal  zero, 511
+00010478               atexit: addi a1, a0, 0
+0001047c                     : addi a3, zero, 0
+00010480                     : addi a2, zero, 0
+00010484                     : addi a0, zero, 0
+00010488                     : jal  zero, 0
+0001048c    __libc_fini_array: addi sp, sp, -16
+00010490                     : sw s0, 8(sp)
+00010494                     : lui  a5, 0x11
+00010498                     : lui  s0, 0x11
+0001049c                     : addi s0, s0, 1496
+000104a0                     : addi a5, a5, 1500
+000104a4                     : sub a5, a5, s0
+000104a8                     : sw s1, 4(sp)
+000104ac                     : sw ra, 12(sp)
+000104b0                     : srai s1, a5, 0x2
+000104b4                     : beq s1, zero, 128
+000104b8                     : addi a5, a5, -4
+000104bc                     : add s0, a5, s0
+000104c0                     : lw a5, 0(s0)
+000104c4                     : addi s1, s1, -1
+000104c8                     : addi s0, s0, -4
+000104cc                     : jalr  ra, 0(a5)
+000104d0                     : bne s1, zero, 511
+000104d4                     : lw ra, 12(sp)
+000104d8                     : lw s0, 8(sp)
+000104dc                     : lw s1, 4(sp)
+000104e0                     : addi sp, sp, 16
+000104e4                     : jalr  zero, 0(ra)
+000104e8  __register_exitproc: lw a4, -984(gp)
+000104ec                     : lw a5, 328(a4)
+000104f0                     : beq a5, zero, 832
+000104f4                     : lw a4, 4(a5)
+000104f8                     : addi a6, zero, 31
+000104fc                     : blt a6, a4, -64
+00010500                     : slli a6, a4, 0x2
+00010504                     : beq a0, zero, -384
+00010508                     : add t1, a5, a6
+0001050c                     : sw a2, 8(t1)
+00010510                     : lw a7, 392(a5)
+00010514                     : addi a2, zero, 1
+00010518                     : sll a2, a2, a4
+0001051c                     : or a7, a7, a2
+00010520                     : sw a7, 8(a5)
+00010524                     : sw a3, 8(t1)
+00010528                     : addi a3, zero, 2
+0001052c                     : beq a0, a3, 640
+00010530                     : addi a4, a4, 1
+00010534                     : sw a4, 4(a5)
+00010538                     : add a5, a5, a6
+0001053c                     : sw a1, 8(a5)
+00010540                     : addi a0, zero, 0
+00010544                     : jalr  zero, 0(ra)
+00010548                     : addi a5, a4, 332
+0001054c                     : sw a5, 8(a4)
+00010550                     : jal  zero, -513
+00010554                     : lw a3, 396(a5)
+00010558                     : addi a4, a4, 1
+0001055c                     : sw a4, 4(a5)
+00010560                     : or a2, a3, a2
+00010564                     : sw a2, 12(a5)
+00010568                     : add a5, a5, a6
+0001056c                     : sw a1, 8(a5)
+00010570                     : addi a0, zero, 0
+00010574                     : jalr  zero, 0(ra)
+00010578                     : addi a0, zero, -1
+0001057c                     : jalr  zero, 0(ra)
+00010580                _exit: addi a1, zero, 0
+00010584                     : addi a2, zero, 0
+00010588                     : addi a3, zero, 0
+0001058c                     : addi a4, zero, 0
+00010590                     : addi a5, zero, 0
+00010594                     : addi a7, zero, 93
+00010598                     : ecall 
+0001059c                     : blt a0, zero, 512
+000105a0                     : jal  zero, 0
+000105a4                     : addi sp, sp, -16
+000105a8                     : sw s0, 8(sp)
+000105ac                     : addi s0, a0, 0
+000105b0                     : sw ra, 12(sp)
+000105b4                     : sub s0, zero, s0
+000105b8                     : jal  ra, -1024
+000105bc                     : sw s0, 0(a0)
+000105c0                     : jal  zero, 0
+000105c4              __errno: lw a0, -976(gp)
+000105c8                     : jalr  zero, 0(ra)
+
+.symtab
+Symbol Value              Size Type     Bind     Vis       Index Name
+[   0] 0x0                   0 NOTYPE   LOCAL    DEFAULT     UND 
+[   1] 0x10074               0 SECTION  LOCAL    DEFAULT       1 
+[   2] 0x115CC               0 SECTION  LOCAL    DEFAULT       2 
+[   3] 0x115D0               0 SECTION  LOCAL    DEFAULT       3 
+[   4] 0x115D8               0 SECTION  LOCAL    DEFAULT       4 
+[   5] 0x115E0               0 SECTION  LOCAL    DEFAULT       5 
+[   6] 0x11A08               0 SECTION  LOCAL    DEFAULT       6 
+[   7] 0x11A14               0 SECTION  LOCAL    DEFAULT       7 
+[   8] 0x0                   0 SECTION  LOCAL    DEFAULT       8 
+[   9] 0x0                   0 SECTION  LOCAL    DEFAULT       9 
+[  10] 0x0                   0 FILE     LOCAL    DEFAULT     ABS __call_atexit.c
+[  11] 0x10074              24 FUNC     LOCAL    DEFAULT       1 register_fini
+[  12] 0x0                   0 FILE     LOCAL    DEFAULT     ABS crtstuff.c
+[  13] 0x115CC               0 OBJECT   LOCAL    DEFAULT       2 
+[  14] 0x100D8               0 FUNC     LOCAL    DEFAULT       1 __do_global_dtors_aux
+[  15] 0x11A14               1 OBJECT   LOCAL    DEFAULT       7 completed.1
+[  16] 0x115D8               0 OBJECT   LOCAL    DEFAULT       4 __do_global_dtors_aux_fini_array_entry
+[  17] 0x10124               0 FUNC     LOCAL    DEFAULT       1 frame_dummy
+[  18] 0x11A18              24 OBJECT   LOCAL    DEFAULT       7 object.0
+[  19] 0x115D4               0 OBJECT   LOCAL    DEFAULT       3 __frame_dummy_init_array_entry
+[  20] 0x0                   0 FILE     LOCAL    DEFAULT     ABS test.c
+[  21] 0x0                   0 FILE     LOCAL    DEFAULT     ABS exit.c
+[  22] 0x0                   0 FILE     LOCAL    DEFAULT     ABS impure.c
+[  23] 0x115E0            1064 OBJECT   LOCAL    DEFAULT       5 impure_data
+[  24] 0x0                   0 FILE     LOCAL    DEFAULT     ABS init.c
+[  25] 0x0                   0 FILE     LOCAL    DEFAULT     ABS atexit.c
+[  26] 0x0                   0 FILE     LOCAL    DEFAULT     ABS fini.c
+[  27] 0x0                   0 FILE     LOCAL    DEFAULT     ABS __atexit.c
+[  28] 0x0                   0 FILE     LOCAL    DEFAULT     ABS sys_exit.c
+[  29] 0x0                   0 FILE     LOCAL    DEFAULT     ABS errno.c
+[  30] 0x0                   0 FILE     LOCAL    DEFAULT     ABS crtstuff.c
+[  31] 0x115CC               0 OBJECT   LOCAL    DEFAULT       2 __FRAME_END__
+[  32] 0x0                   0 FILE     LOCAL    DEFAULT     ABS 
+[  33] 0x115DC               0 NOTYPE   LOCAL    DEFAULT       4 __fini_array_end
+[  34] 0x115D8               0 NOTYPE   LOCAL    DEFAULT       4 __fini_array_start
+[  35] 0x115D8               0 NOTYPE   LOCAL    DEFAULT       3 __init_array_end
+[  36] 0x115D0               0 NOTYPE   LOCAL    DEFAULT       3 __preinit_array_end
+[  37] 0x115D0               0 NOTYPE   LOCAL    DEFAULT       3 __init_array_start
+[  38] 0x115D0               0 NOTYPE   LOCAL    DEFAULT       3 __preinit_array_start
+[  39] 0x11DE0               0 NOTYPE   GLOBAL   DEFAULT     ABS __global_pointer$
+[  40] 0x105C4               8 FUNC     GLOBAL   DEFAULT       1 __errno
+[  41] 0x11A08               0 NOTYPE   GLOBAL   DEFAULT       6 __SDATA_BEGIN__
+[  42] 0x11A0C               0 OBJECT   GLOBAL   HIDDEN        6 __dso_handle
+[  43] 0x11A08               4 OBJECT   GLOBAL   DEFAULT       6 _global_impure_ptr
+[  44] 0x101E0             156 FUNC     GLOBAL   DEFAULT       1 __libc_init_array
+[  45] 0x1048C              92 FUNC     GLOBAL   DEFAULT       1 __libc_fini_array
+[  46] 0x10358             288 FUNC     GLOBAL   DEFAULT       1 __call_exitprocs
+[  47] 0x1008C              76 FUNC     GLOBAL   DEFAULT       1 _start
+[  48] 0x104E8             152 FUNC     GLOBAL   DEFAULT       1 __register_exitproc
+[  49] 0x11A30               0 NOTYPE   GLOBAL   DEFAULT       7 __BSS_END__
+[  50] 0x11A14               0 NOTYPE   GLOBAL   DEFAULT       7 __bss_start
+[  51] 0x1027C             220 FUNC     GLOBAL   DEFAULT       1 memset
+[  52] 0x10144             108 FUNC     GLOBAL   DEFAULT       1 main
+[  53] 0x10478              20 FUNC     GLOBAL   DEFAULT       1 atexit
+[  54] 0x11A10               4 OBJECT   GLOBAL   DEFAULT       6 _impure_ptr
+[  55] 0x115E0               0 NOTYPE   GLOBAL   DEFAULT       5 __DATA_BEGIN__
+[  56] 0x11A14               0 NOTYPE   GLOBAL   DEFAULT       6 _edata
+[  57] 0x11A30               0 NOTYPE   GLOBAL   DEFAULT       7 _end
+[  58] 0x101B0              48 FUNC     GLOBAL   DEFAULT       1 exit
+[  59] 0x10580              68 FUNC     GLOBAL   DEFAULT       1 _exit
