@@ -5,6 +5,8 @@ import myBase.MyWriter;
 import myBase.MyPair;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -15,7 +17,8 @@ public class ParserELF {
     private final MyReader in;
     private final MyWriter out;
     private final Map<String, Section> sections = new LinkedHashMap<>();
-    private final Map<Integer, SymTabNode> symTabNodes = new LinkedHashMap<>();
+    private final ArrayList<SymTabNode> symTabNodes = new ArrayList<>();
+    private final Map<Integer, Integer> symTabNodesDict = new HashMap<>();
 
     public ParserELF(String fileIn, String fileOut) {
         try {
@@ -49,6 +52,7 @@ public class ParserELF {
         } catch (IOException e) {
             throw new ParserException(String.format("Error while closing file \"%s\"", out));
         }
+        System.out.println("Successfully parsed!");
     }
 
     private void enterData() {
@@ -92,9 +96,10 @@ public class ParserELF {
         final int addr = Text.addr;
         for (int i = 0; i < size; i += 2) {
             MyPair<String[], Boolean> ans = ParserCommands.parseCommand(bytes, ind);
-            out.write(String.format("0x%08x", addr + i));
-            String label = (symTabNodes.containsKey(addr + i) && symTabNodes.get(addr + i).getType().equals("FUNC")) ?
-                    symTabNodes.get(addr + i).getName() : "";
+            out.write(String.format("%08x", addr + i));
+            String label = (symTabNodesDict.containsKey(addr + i) &&
+                    symTabNodes.get(symTabNodesDict.get(addr + i)).getType().equals("FUNC")) ?
+                    symTabNodes.get(symTabNodesDict.get(addr + i)).getName() : "";
             out.write(String.format(" %10s%s", label, label.isEmpty() ? " " : ":"));
             int len = ans.getFirst().length;
             for (int j = 0; j < len; j++) {
@@ -127,15 +132,23 @@ public class ParserELF {
             final int size = cnt(ind + i * 16 + 8, 4);
             final int info = Integer.parseInt(new StringBuilder(sb.substring(0, 8)).reverse().toString(), 2);
             final int other = Integer.parseInt(new StringBuilder(sb.substring(8)).reverse().toString(), 2);
-            symTabNodes.put(value, new SymTabNode(i, name, value, size, info, other));
+            symTabNodesDict.put(value, symTabNodes.size());
+            symTabNodes.add(new SymTabNode(i, name, value, size, info, other));
         }
+        updateDataInParserCommands();
+    }
+
+    private void updateDataInParserCommands() {
+        ParserCommands.symTabNodes = symTabNodes;
+        ParserCommands.symTabNodesDict = symTabNodesDict;
+        ParserCommands.text_addr = sections.get(".text").addr;
     }
 
     private void dumpSymtab() throws IOException {
         out.write(".symtab\n");
-        out.write(String.format("%s %-12s %7s %-8s %-8s %-8s %6s %s\n",
+        out.write(String.format("%s %-15s %7s %-8s %-8s %-8s %6s %s\n",
                 "Symbol", "Value", "Size", "Type", "Bind", "Vis", "Index", "Name"));
-        for (SymTabNode node : symTabNodes.values()) {
+        for (SymTabNode node : symTabNodes) {
             out.write(node.toString());
         }
     }

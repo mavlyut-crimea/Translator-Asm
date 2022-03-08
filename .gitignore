@@ -1,0 +1,11 @@
+.*
+_*
+
+*.class
+NT.txt
+EM.txt
+VK.txt
+Main.java
+MainVK.java
+/myBase/NotImplementedException.java
+/myBase/TODO.java

@@ -4,6 +4,17 @@ public class SymTabNode {
     private final int symbol, value, size;
     private final String type, bind, vis, index, name;
 
+    protected SymTabNode(String name) {
+        this.symbol = 0;
+        this.value = 0;
+        this.size = 0;
+        this.type = "FUNC";
+        this.bind = null;
+        this.vis = null;
+        this.index = null;
+        this.name = name;
+    }
+
     protected SymTabNode(
             final int i, final String name, final int value, final int size, final int info, final int other
     ) {
@@ -27,8 +38,11 @@ public class SymTabNode {
 
     @Override
     public String toString() {
+        if (name.startsWith("LOC")) {
+            return "";
+        }
         return String.format(
-                "[%4d] 0x%-12x %5d %-8s %-8s %-8s %6s %s\n",
+                "[%4d] 0x%-15X %5d %-8s %-8s %-8s %6s %s\n",
                 symbol, value, size, type, bind, vis, index, name
         );
     }
