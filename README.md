@@ -4,7 +4,7 @@
 
   Запускать файл [Main](https://github.com/mavlyut/Translator-Asm/blob/main/Main.java). 
   
-  Разбор ELF-файла начинается в файлу [ParserELF](https://github.com/mavlyut/Translator-Asm/blob/main/parsers/ParserELF.java).
+  Разбор ELF-файла начинается в файле [ParserELF](https://github.com/mavlyut/Translator-Asm/blob/main/parsers/ParserELF.java).
   
   Загружены тесты:
   1. [test.elf](https://github.com/mavlyut/Translator-Asm/blob/main/test.elf);
